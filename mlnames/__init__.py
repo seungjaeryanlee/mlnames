@@ -1,7 +1,8 @@
+import os
 import random
 
 
-with open("corpus", "r") as f:
+with open(os.path.join(os.path.dirname(__file__), "corpus"), "r") as f:
     corpus = [vocab.rstrip() for vocab in f.readlines()]
 
 
