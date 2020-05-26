@@ -19,5 +19,7 @@ def set_seed(seed):
     rng.seed(seed)
 
 
-def get_name(n_words=1, prefix="", suffix=""):
-    return prefix + "-".join(rng.sample(corpus, n_words)) + suffix
+def get_name(n_words=1, prefix="", suffix="", word_max_len=None):
+    if word_max_len is not None:
+        filtered_corpus = [word for word in corpus if len(word) <= word_max_len]
+    return prefix + "-".join(rng.sample(filtered_corpus, n_words)) + suffix
