@@ -16,9 +16,6 @@ from tqdm import tqdm
 
 en_stopwords = set(stopwords.words('english'))
 en_stopwords.add("")
-with open(os.path.join(os.path.dirname(__file__), "exclude_words"), "r") as f:
-    exclude_words = [w.rstrip() for w in f.readlines()]
-en_stopwords.update(exclude_words)
 lemmatizer = WordNetLemmatizer()
 
 
