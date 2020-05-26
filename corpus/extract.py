@@ -1,4 +1,5 @@
 from collections import Counter
+import os
 import urllib.request
 
 from bs4 import BeautifulSoup
@@ -14,11 +15,14 @@ from tqdm import tqdm
 
 en_stopwords = set(stopwords.words('english'))
 en_stopwords.add("")
+with open(os.path.join(os.path.dirname(__file__), "stopwords"), "r") as f:
+    custom_stopwords = [w.rstrip() for w in f.readlines()]
+en_stopwords.update(custom_stopwords)
 lemmatizer = WordNetLemmatizer()
 
 
 def main():
-    url = 'http://export.arxiv.org/api/query?search_query=cat:stat.ML+OR+cat:cs.AI+OR+cat:cs.LG&start=0&max_results=100'
+    url = "http://export.arxiv.org/api/query?search_query=cat:stat.ML+OR+cat:cs.AI+OR+cat:cs.LG&start=0&max_results=2000"
     with urllib.request.urlopen(url) as response:
         html = response.read()
     soup = BeautifulSoup(html, features="lxml")
