@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mlnames",
-    version="0.1.1",
+    version="0.1.2",
     author="Seungjae Ryan Lee",
     author_email="seungjaeryanlee@github.com",
     description="Name generator that uses machine learning vocabulary.",
